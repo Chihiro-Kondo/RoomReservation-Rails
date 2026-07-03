@@ -1,10 +1,26 @@
 header {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: rgb(170, 241, 231);
   color: rgb(157, 135, 105);
 }
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 
 footer {
   width: 100%;
+  min-height: 100px;
   background-color: rgb(170, 241, 231);;
 }
