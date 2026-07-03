@@ -1,0 +1,20 @@
+<%= form_with model: @user, url: "/users/profile", method: :patch, local: true do |f| %>
+
+  <div>
+    <%= f.label :avatar, "アイコン画像" %>
+    <%= f.file_field :avatar %>
+  </div>
+  
+  <div>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :introduction, "自己紹介" %>
+    <%= f.text_area :introduction %>
+  </div>
+
+  <%= f.submit "更新する" %>
+
+<% end %>

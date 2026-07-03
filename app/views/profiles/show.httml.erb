@@ -1,0 +1,9 @@
+<% if @user.avatar? %>
+  <%= image_tag @user.avatar.url %>
+<% end %>
+
+<p><%= @user.name %></p>
+
+<p><%= @user.introduction %></p>
+
+<%= link_to "プロフィールを編集", "/users/profile/edit" %>

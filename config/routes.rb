@@ -5,11 +5,12 @@ Rails.application.routes.draw do
     :sessions => "users/sessions",
     :passwords => "users/passwords"
     }
-  
-
-    get "/" => "home#index"
-    get "home/show"
-
+    
+    get "users/profile", to: "profiles#show"
+    get "users/profile/edit", to: "profiles#edit"
+    patch "users/profile", to: "profiles#update"
+    
+    get "home/index"
     root "home#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
