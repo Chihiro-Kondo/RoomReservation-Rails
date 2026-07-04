@@ -20,23 +20,25 @@
   
   <body>
     <header>
+      <%= link_to root_path do %>
+        <%= image_tag "CHRTRAVEL_logo.png", alt: "ロゴ", class: "logo" %>
+      <% end %>
+
       <%if user_signed_in? %>
 
         <%= render "layouts/header" %>
         
       <% else %>
-          <ul>
-            <li>
-              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary btn-lg"%>
-              <button class="btn btn-primary">Bootstrapテスト</button>
-            </li>
-            <li>
+         <ul class="auth-menu">
+           <li>
+              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-danger btn-lg"%>
+           </li>
+           <li>
               <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary btn-lg"%>
-            </li>
-          </ul>
+           </li>
+         </ul>           
       <% end %>
-      
-              
+                   
     </header>
     <%= yield %>
     <footer>

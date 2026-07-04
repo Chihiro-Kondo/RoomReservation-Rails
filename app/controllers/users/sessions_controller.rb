@@ -18,11 +18,14 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   #ここは config/initializers/devise.rb　で config.sign_out_via =:get としているため DELETEではなく GET
-  #def destroy
-   #super
-  #end
+  def destroy
+    super
+  end
 
   protected
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
 
   # 許可するための追加のパラメータがある場合は、sanitizer　に追加してください
   def configure_sign_in_params
