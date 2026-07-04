@@ -37,10 +37,11 @@
               <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary btn-lg"%>
            </li>
          </ul>           
-      <% end %>
-                   
+      <% end %>            
     </header>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
     <footer>
       <h2>CHR TRAVEL</h2>
     </footer>

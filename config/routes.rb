@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "accounts/show"
   devise_for :users, :controllers => {
     :confirmations => "users/confirmations",
     :registrations => "users/registrations",
@@ -9,7 +10,8 @@ Rails.application.routes.draw do
     get "users/profile", to: "profiles#show"
     get "users/profile/edit", to: "profiles#edit"
     patch "users/profile", to: "profiles#update"
-    
+    get "users/account", to: "accounts#show"
+
     get "home/index"
     root "home#index"
 
