@@ -1,20 +1,49 @@
 <%= form_with model: @user, url: "/users/profile", method: :patch, local: true do |f| %>
+ 
+  <h1 class="mb-5">プロフィール編集</h1>
 
-  <div>
-    <%= f.label :avatar, "アイコン画像" %>
-    <%= f.file_field :avatar %>
+  <div class="row align-items-center mb-5">
+    <div class="col-md-3">
+      <%= f.label :avatar, "アイコン画像", class: "form-label fw-bold" %>
   </div>
   
-  <div>
-    <%= f.label :name, "名前" %>
-    <%= f.text_field :name %>
+  <div class="col-md-2">
+    <% if @user.avatar? %>
+      <%= image_tag @user.avatar.url, class: "profile-avatar" %>
+    <% else %>
+      <%= image_tag "default-avatar.png", class: "profile-avatar" %>
+    <% end %>
   </div>
 
-  <div>
-    <%= f.label :introduction, "自己紹介" %>
-    <%= f.text_area :introduction %>
+  <div class="col-md-4">
+    <%= f.file_field :avatar, class: "form-control" %>
   </div>
 
-  <%= f.submit "更新する" %>
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <%= f.label :name, "名前", class: "form-label fw-bold" %>
+    </div>
+
+    <div class ="col-md-9">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-3">
+      <%= f.label :introduction, "自己紹介", class: "form-label fw-bold" %>
+    </div>
+
+    <div class="col-md-9">
+      <%= f.text_area :introduction, rows: 5, class: "form-control", placeholder: "自己紹介を入力" %>
+  </div>
+</div>
+
+<div class ="text-end">
+  <%= link_to "キャンセル", "/users/profile", class: "btn btn-outline-secondary me-3" %>
+  <%= f.submit "保存", class: "btn btn-primary" %>
+</div>
 
 <% end %>
+
+
