@@ -1,0 +1,14 @@
+.search-wrapper {
+  width:100%;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+  background-color: lightcyan;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+.search-btn2 {
+  width: 300px;
+}

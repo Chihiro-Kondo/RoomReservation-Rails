@@ -1,0 +1,30 @@
+<div class="roomCreate-page">
+  <div class="roomCreate-card">
+    <h2 class="roomCreate-title">新規登録</h2>
+
+    <%= form_with model: @room do |f| %>
+    
+      <div class="form-group">
+        <%= f.label :name, "施設名", class: "required" %>
+        <%= f.text_field :name, placeholder: "ルーム名を入力", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description, "施設詳細", class: "required" %>
+        <%= f.text_area :description, rows: 5, placeholder: "施設詳細を入力", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price, "料金", class:"required" %>
+        <%= f.text_field :price, placeholder: "一泊あたりの価格を入力", class: "form-control" %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label :address, "住所", class:"required" %>
+        <%= f.text_field :address, placeholder: "住所を入力", class: "form-control" %>
+      </div>
+
+       <%= f.submit "登録", class: "roomCreate-btn" %>
+    <% end %>
+  </div>
+</div>   
