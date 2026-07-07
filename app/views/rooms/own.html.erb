@@ -1,0 +1,23 @@
+<h2>登録済み一覧</h2>
+
+<tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <th>画像</th>
+      <td><%= image_tag room.image.url,
+      size: "170x170" if room.image? %></td>
+      
+      <th>施設名</th>
+      <td><%=link_to room.name, room_path(room) %></td>
+
+      <th>紹介文</th>
+      <td><%= truncate(room.description, length: 60) %></td>
+
+      <th>料金</th>
+      <td>¥<%= number_with_delimiter(room.price) %>~</td>
+      
+      <th>作成日</th>
+      <td><%= room.created_at.strftime("%Y/%m/%d") %></td>
+    </tr>
+  <% end %>
+</tbody>

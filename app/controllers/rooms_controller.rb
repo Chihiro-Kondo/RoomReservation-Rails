@@ -22,9 +22,22 @@ class RoomsController < ApplicationController
   end
 
   def create #施設の保存
+    @room = current_user.rooms.new(params.require(:room).permit(:name, :description,
+    :price, :address, :image))
+    
+    if @room.save
+      redirect_to :rooms, notice: "施設を新規作成しました"
+    else
+      render "new", status: :unprocessable_entity
+    end
+  end
+ 
+  def own 
+    @rooms = current_user.rooms.order(created_at: :desc)
   end
 
   def show #登録された施設
+    @room = Room.find(params[:id])
   end
 
   def edit #登録した施設の編集

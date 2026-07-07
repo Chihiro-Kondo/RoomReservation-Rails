@@ -1,0 +1,9 @@
+#施設1件の詳細を表示
+
+<h2><%= @room.name %>
+
+<%= image_tag @room.image.url if @room image? %>
+
+<p><%= @room.description %></p>
+
+<p>¥<%= number_with_delimiter(@room.price) %>~</p>
