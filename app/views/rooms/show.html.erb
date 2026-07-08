@@ -1,9 +1,60 @@
 #施設1件の詳細を表示
+<div class="container mt-4">
+  <%= link_to "←戻る", request.referer || root_path, class: "back-link" %>
+  
+  <div class="row mt-4">
+    <div class="col-md-5">
+      
+      <% if @room.image? %>
+        <%= image_tag @room.image.url, class: "img-fluid room-image" %>
+      <% end %>
+    </div>
 
-<h2><%= @room.name %>
+    <div class ="col-md-7 room-detail">
+      
+      <div class="d-flex justify-content-between align-items-start">
+        
+        <div>
+          <h2><%= @room.name %></h2>
 
-<%= image_tag @room.image.url if @room image? %>
+          <p class="text-muted"><%= @room.address %></p>
+        </div>
 
-<p><%= @room.description %></p>
+        <h1 class="price">
+          ¥<%= number_with_delimiter(@room.price) %>~
+        </h1>
+      </div>
 
-<p>¥<%= number_with_delimiter(@room.price) %>~</p>
+      <p class="mt-4">
+        <%= @room.description %>
+      </p>
+
+      <div class="reseervation-box">
+        <div class="row">
+
+          <div class="col-md-4">
+          #予約モデルを作成後に以下を実装し直すこと！
+            <label>チェックイン</label>
+            <input type="date" class="form-control">
+          </div>
+          
+          <div class="col-md-4">
+          #予約モデルを作成後に以下を実装し直すこと！
+            <label>チェックアウト</label>
+            <input type="date" class="form-control">
+          </div>
+
+          <div class="col-md-4">
+          #予約モデルを作成後に以下を実装し直すこと！
+            <label>人数</label>
+            <input type="number" min="1" class="form-control" placeholder="人">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn reserve-btn mt-4">予約する</button>
+    
+    </div>
+  </div>
+</div>
+

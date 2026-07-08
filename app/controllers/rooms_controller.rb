@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index #検索結果一覧
     @rooms = Room.all
     
@@ -41,11 +43,25 @@ class RoomsController < ApplicationController
   end
 
   def edit #登録した施設の編集
+    @room = Room.find(params[:id])
   end
 
   def update #内容の更新
+    @room = current_user.rooms.find(params[:id])
+
+    if @room.update(room_params)
+      redirect_to rooms_path, notice: "施設内容を更新しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  private
+
+  def room_params
+    params.require(:room).permit(:name,:description, :price, :address, :image)
   end
 
   def destroy #施設の削除
   end
 end
+
