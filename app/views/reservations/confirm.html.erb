@@ -1,0 +1,26 @@
+<h2>予約内容確認</h2>
+
+<p>施設名：<%= @room.name %></p>
+<p>料金：<%= number_with_delimiter(@room.price) %>~</p>
+
+<%= form_with model: @reservation do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+
+  <div class="mb-3">
+    <%= f.label :checkin_at, "チェックイン" %>
+    <%= f.date_field :checkin_at %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :checkout_at, "チェックアウト" %>
+    <%= f.date_field :checkout_at %>
+  </div>
+
+   <div class="mb-3">
+    <%= f.label :guest_count, "人数" %>
+    <%= f.number_field :guest_count %>
+  </div>
+
+  <%= f.submit "予約を確定する", class: "btn btn-danger" %>
+<% end %>
+  

@@ -7,6 +7,8 @@
       
       <% if @room.image? %>
         <%= image_tag @room.image.url, class: "img-fluid room-image" %>
+      <% else %>
+          <%= image_tag "default-room.png", class: "detail-room-image" %>
       <% end %>
     </div>
 
@@ -51,9 +53,13 @@
           </div>
         </div>
       </div>
-
-      <button class="btn reserve-btn mt-4">予約する</button>
-    
+      
+      <% if user_signed_in? %>
+        <%= link_to "予約する", confirm_reservations_path(room_id: @room.id), class: "btn btn-danger w-100" %>
+      <% else %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary w-100" %>
+      <% end %>
+      
     </div>
   </div>
 </div>

@@ -33,4 +33,11 @@ Rails.application.routes.draw do
       get :own
     end
   end
+  
+  resources :reservations do
+    collection do
+      get :confirm
+      post :create
+    end
+  end
 end

@@ -9,6 +9,65 @@
   gap: 20px;
   align-items: center;
 }
+
 .search-btn2 {
   width: 300px;
+}
+
+.search-count {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.Room-card {
+  background-color: #fff8f3;
+  border-radius: 20px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  height: 100%;
+}
+.roomImageThumb{
+  width: 100%;
+  object-fit: cover;
+}
+
+.room-body{
+  padding: 25px;
+}
+
+.room-body h4{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.address{
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.description{
+  height: 90px;
+  overflow: hidden;
+  line-height: 1.8;
+}
+
+.room-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.detail-btn {
+  background-color: #ff6d4a;
+  color: white;
+  border-radius: 10px;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.detail-btn:hover{
+  background-color: #ff5b33;
+  color: white;
 }
