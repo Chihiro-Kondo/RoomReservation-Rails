@@ -27,17 +27,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  
+  get "rooms/own", to: "rooms#own", as: :own_rooms
   resources :rooms do
     collection do
-      get :own
     end
   end
   
-  resources :reservations do
+  resources :reservations, only: [:index, :create, :edit, :update, :destroy]  do
     collection do
-      get :confirm
-      post :create
+      post :confirm
     end
   end
 end

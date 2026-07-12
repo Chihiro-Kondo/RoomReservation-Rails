@@ -1,12 +1,15 @@
 .room-image {
   width: 100%;
+  max-width: 760px;
   height: 500px;
   object-fit: cover;
+  display: block;
 }
 
 .room-detail {
   background-color: #fcf4ea;
   padding: 30px;
+  margin: 0 20px 20px 40px;
 }
 
 .price{

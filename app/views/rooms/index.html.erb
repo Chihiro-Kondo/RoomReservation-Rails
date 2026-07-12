@@ -17,7 +17,7 @@
   <% end %>
 </div>
 
-<div class="container mt-5 mx-2">
+<div class="container mt-5 mx-5">
   <h3 class="search-count">
     <%= @rooms.count %>件見つかりました。
   </h3>
@@ -29,10 +29,7 @@
 
         <div class="Room-card">
 
-          <% if room.image? %>
-            <%= image_tag room.image.thumb.url, class: "roomImageThumb" %>
-          
-          <% end %>
+            <%= image_tag room.image.url, class: "roomImageThumb" %>
 
           <div class="room-body">
           

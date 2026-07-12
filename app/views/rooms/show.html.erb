@@ -1,18 +1,18 @@
-#施設1件の詳細を表示
-<div class="container mt-4">
+<div class="container px-0">
   <%= link_to "←戻る", request.referer || root_path, class: "back-link" %>
   
-  <div class="row mt-4">
+  <div class="row mt-3">
     <div class="col-md-5">
       
       <% if @room.image? %>
         <%= image_tag @room.image.url, class: "img-fluid room-image" %>
       <% else %>
-          <%= image_tag "default-room.png", class: "detail-room-image" %>
+        <%= image_tag "default-room.png", class: "img-fluid room-image" %>
       <% end %>
+    
     </div>
 
-    <div class ="col-md-7 room-detail">
+    <div class ="col-md-6 room-detail">
       
       <div class="d-flex justify-content-between align-items-start">
         
@@ -30,37 +30,38 @@
       <p class="mt-4">
         <%= @room.description %>
       </p>
+      
+    <%= form_with url: confirm_reservations_path, method: :post, scope: :reservation, local: true do |f| %>
+      <%= f.hidden_field :room_id, value: @room.id %>
 
-      <div class="reseervation-box">
+      <div class="reservation-box">
         <div class="row">
 
-          <div class="col-md-4">
-          #予約モデルを作成後に以下を実装し直すこと！
-            <label>チェックイン</label>
-            <input type="date" class="form-control">
+          <div class="col-md-4">       
+            <%= f.label :checkin_at, "チェックイン" %>
+            <%= f.date_field :checkin_at, class: "form-control" %>
           </div>
           
           <div class="col-md-4">
-          #予約モデルを作成後に以下を実装し直すこと！
-            <label>チェックアウト</label>
-            <input type="date" class="form-control">
+            <%= f.label :checkout_at, "チェックアウト" %>
+            <%= f.date_field :checkout_at, class: "form-control" %>
           </div>
 
           <div class="col-md-4">
-          #予約モデルを作成後に以下を実装し直すこと！
-            <label>人数</label>
-            <input type="number" min="1" class="form-control" placeholder="人">
+            <%= f.label :guest_count, "人数" %>
+            <%= f.number_field :guest_count, min: 1, class: "form-control", placeholder: "人" %>
           </div>
         </div>
       </div>
       
       <% if user_signed_in? %>
-        <%= link_to "予約する", confirm_reservations_path(room_id: @room.id), class: "btn btn-danger w-100" %>
+        <%= f.submit "予約する", class: "btn btn-danger w-100" %>
       <% else %>
         <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary w-100" %>
       <% end %>
       
-    </div>
+    <% end %>
   </div>
 </div>
+
 

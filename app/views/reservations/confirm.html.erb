@@ -1,26 +1,67 @@
-<h2>予約内容確認</h2>
+<div class="container reservation-confirm" >
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
 
-<p>施設名：<%= @room.name %></p>
-<p>料金：<%= number_with_delimiter(@room.price) %>~</p>
+      <h2 class="mb-5">予約内容確認</h2>
+     
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>チェックイン</th>
+            <td class="text-end">
+              <%= @reservation.checkin_at.strftime("%Y/%m/%d") %>
+            </td>
+          </tr>
 
-<%= form_with model: @reservation do |f| %>
-  <%= f.hidden_field :room_id, value: @room.id %>
+          <tr>
+            <th>チェックアウト</th>
+            <td class="text-end">
+              <%= @reservation.checkout_at.strftime("%Y/%m/%d") %>
+            </td>
+          </tr>
 
-  <div class="mb-3">
-    <%= f.label :checkin_at, "チェックイン" %>
-    <%= f.date_field :checkin_at %>
+          <tr>
+            <th>日数</th>
+            <td class="text-end">
+              <%= (@reservation.checkout_at - @reservation.checkin_at).to_i %>日
+            </td>
+          </tr>
+
+          <tr>
+            <th>人数</th>
+            <td class="text-end">
+              <%= @reservation.guest_count %>人
+            </td>
+          </tr>
+
+          <tr class="total-row">
+            <th>お支払い金額</th>
+            <td class="text-end total-price">
+              ¥<%= number_with_delimiter(@reservation.total_price) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p class="confirm-message">
+        上記内容で正しければ「確定」ボタンを押してください。
+      </p>
+      
+      <div class="d-grid gap-3">
+
+        <%= form_with model: @reservation do |f| %>
+          <%= f.hidden_field :room_id %>
+          <%= f.hidden_field :checkin_at %>
+          <%= f.hidden_field :checkout_at %>
+          <%= f.hidden_field :guest_count %>
+          <%= f.submit "予約を確定", class: "btn-confirm" %>
+        <% end %>
+
+        <%= link_to "キャンセル", room_path(@room), class: "btn-cancel" %>
+
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="mb-3">
-    <%= f.label :checkout_at, "チェックアウト" %>
-    <%= f.date_field :checkout_at %>
-  </div>
-
-   <div class="mb-3">
-    <%= f.label :guest_count, "人数" %>
-    <%= f.number_field :guest_count %>
-  </div>
-
-  <%= f.submit "予約を確定する", class: "btn btn-danger" %>
-<% end %>
   

@@ -1,0 +1,94 @@
+<div class="container reservation-list mt-5 p-0">
+
+  <h2 class="mb-5">予約済み一覧</h2>
+
+  <!--項目-->
+  <div class="reservation-header">
+    <div>画像</div>
+    <div>施設名</div>
+    <div>紹介文</div>
+    <div>合計料金</div>
+    <div>チェックイン</div>
+    <div>チェックアウト</div>
+    <div>予約確定日時</div>
+    <div></div>
+  </div>
+
+  <% @reservations.each do |reservation| %>
+
+    <% room = reservation.room %>
+  
+    <div class="reservation-row">
+      <!-- 画像 -->
+      <div class="image-area">
+        <% if room.image? %>
+          <%= image_tag room.image.url %>
+        <% else %>
+          <%= image_tag "default-room.png" %>
+        <% end %>
+      </div>
+
+      <!-- 施設名 -->
+      <div class="name-area">
+        <%=link_to room.name, room_path(room) %>
+      </div>
+
+      <!-- 紹介文 -->
+      <div class="description-area">
+        <%= truncate(room.description, length: 80) %>
+      </div>
+
+      <!-- 合計金額 -->
+      <div class="price-area">
+        ¥<%= number_with_delimiter(reservation.total_price) %>
+      </div>
+
+      <!-- チェックイン -->
+      <div>
+        <%= reservation.checkin_at.strftime("%Y/%m/%d") %>
+      </div>
+
+      <!-- チェックアウト -->
+      <div>
+        <%= reservation.checkout_at.strftime("%Y/%m/%d") %>
+      </div>
+
+      <div>
+       <%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %>
+      </div>
+
+      <!-- 三点メニュー -->
+      <div class="col-1 text-end">
+        <div class="dropdown">
+
+          <button class="btn btn-link text-dark p-0" data-bs-toggle="dropdown">
+
+          <i class="bi bi-three-dots-vertical fs-4"></i>
+          </button>
+
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to "編集", edit_reservation_path(reservation), class: "dropdown-item" %>
+            </li>
+
+            <li>
+              <%= button_to "削除", reservation_path(reservation),
+              method: :delete,
+              class: "dropdown-item text-danger", 
+              data: { turbo_confirm: "削除しますか？" } %>
+            </li>
+          </ul>
+        </div>      
+      </div>
+      <div class="menu-area"></div>
+    </div>
+  <% end %>
+</div>
+    
+
+
+
+
+
+
+

@@ -59,9 +59,10 @@
             </li>
 
             <li>
-              <%= link_to "削除", room_path(room),
-              data:{turbo_method: :delete,turbo_confirm: "削除しますか？"}, 
-              class: "dropdown-item text-danger" %>
+              <%= button_to "削除", room_path(room),
+              method: :delete,
+              class: "dropdown-item text-danger", 
+              data: { turbo_confirm: "削除しますか？" } %>
             </li>
 
           </ul>

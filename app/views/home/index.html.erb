@@ -31,41 +31,49 @@
 
     <div class="col-md-3">
       <div class="card area-card">
-        <%= image_tag "Tokyo.png", class: "card-img-top" %>
+        <%= link_to rooms_path(address: "東京都") do %>
+          <%= image_tag "Tokyo.png", class: "card-img-top" %>
         
-        <div class="card-body text-center">
-          <h5>東京</h5>
-        </div>
+          <div class="card-body text-center">
+            <h5>東京</h5>
+          </div>
+        <% end %>
       </div>
     </div>
     
     <div class="col-md-3">
       <div class="card area-card">
-        <%= image_tag "Osaka.jpg", class: "card-img-top" %>
+        <%= link_to rooms_path(address: "大阪府") do %>
+          <%= image_tag "Osaka.jpg", class: "card-img-top" %>
 
-        <div class="card-body text-center">
-          <h5>大阪</h5>
-        </div>
+          <div class="card-body text-center">
+            <h5>大阪</h5>
+          </div>
+        <% end %>
       </div>
     </div>
     
     <div class="col-md-3">
       <div class="card area-card">
-        <%= image_tag "Kyoto.jpg", class: "card-img-top" %>
+        <%= link_to rooms_path(address: "京都府") do %>
+          <%= image_tag "Kyoto.jpg", class: "card-img-top" %>
 
-        <div class="card-body text-center">
-          <h5>京都</h5>
-        </div>
+          <div class="card-body text-center">
+            <h5>京都</h5>
+          </div>
+        <% end %>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="card area-card">
-        <%= image_tag "Sapporo.jpg", class: "card-img-top" %>
+        <%= link_to rooms_path(address: "札幌市") do %>
+          <%= image_tag "Sapporo.jpg", class: "card-img-top" %>
 
-        <div class="card-body text-center">
-          <h5>札幌</h5>
-        </div>
+          <div class="card-body text-center">
+            <h5>札幌</h5>
+          </div>
+        <% end %>
       </div>
     </div>
 

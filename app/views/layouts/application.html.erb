@@ -25,7 +25,7 @@
         <%= image_tag "CHRTRAVEL_logo.png", alt: "ロゴ", class: "logo" %>
       <% end %>
 
-      <%if user_signed_in? %>
+      <% if user_signed_in? %>
 
         <%= render "layouts/header" %>
         
@@ -41,8 +41,17 @@
       <% end %>            
     </header>
     <main>
+      <div class="container mt-3">
+        <% flash.each do |type, message| %>
+          <div class="alert <%= type == "notice" ? "alert-success" : "alert-danger" %>">
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
+  
       <%= yield %>
     </main>
+    
     <footer>
       <h2>CHR TRAVEL</h2>
     </footer>

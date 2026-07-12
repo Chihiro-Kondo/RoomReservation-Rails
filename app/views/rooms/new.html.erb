@@ -27,8 +27,14 @@
     <div class="form-row">
       <%= f.label :image, "施設画像" %>
       <%= f.file_field :image, class: "form-control file-upload" %>
-    </div>
       
+        <% if @room.image? %>
+          <%= image_tag @room.image.url %>
+        <% else %>
+          <%= image_tag "default-room.png" %>
+        <% end %>
+    </div>
+      <p class="text-danger" >※デフォルトの画像を表示しています</p>
       <%= f.submit "登録", class: "save-btn" %>
 
       <%= link_to "キャンセル", rooms_path, class: "cancel-btn" %>

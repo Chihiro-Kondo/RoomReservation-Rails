@@ -71,7 +71,9 @@
   transition: translateY(-8px);
 }
 
-.area-card h5{
+.area-card h5 {
   margin-top: 15px;
   font-weight: bold;
+  text-decoration: none;
+  color: black;
 }

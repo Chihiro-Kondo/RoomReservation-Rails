@@ -11,14 +11,22 @@ class Reservation < ApplicationRecord
 
 
   def checkout_at_after_checkin_at
+    return if checkin_at.blank? || checkout_at.blank?
+
     if checkout_at < checkin_at
       errors.add(:checkout_at, "はチェックインの翌日以降で入力してください")
     end
   end
 
   def checkin_at_must_be_today_or_later
+    return if checkin_at.blank?
+    
     if checkin_at < Date.current
       errors.add(:checkin_at, "は今日以降の日付を入力してください")
     end
+  end
+
+  def total_price
+    (checkout_at - checkin_at).to_i * room.price * guest_count
   end
 end

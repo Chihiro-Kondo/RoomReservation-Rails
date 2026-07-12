@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
     if params[:keyword].present?
       keyword = "%#{params[:keyword]}%"
 
-      @rooms = @rooms.where("name LIKE :keyword OR description LIKE :keyword",
+      @rooms = @rooms.where("name LIKE :keyword OR address LIKE :keyword OR description LIKE :keyword",
         keyword: keyword
       )
     end
@@ -34,11 +34,11 @@ class RoomsController < ApplicationController
     end
   end
  
-  def own 
+  def own #登録された施設
     @rooms = current_user.rooms.order(created_at: :desc)
   end
 
-  def show #登録された施設
+  def show 
     @room = Room.find(params[:id])
   end
 
@@ -55,13 +55,17 @@ class RoomsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @room = current_user.rooms.find(params[:id])
+    @room.destroy
+
+    redirect_to own_rooms_path, notece: "施設を削除しました"
+  end
   private
 
   def room_params
     params.require(:room).permit(:name,:description, :price, :address, :image)
-  end
-
-  def destroy #施設の削除
   end
 end
 
