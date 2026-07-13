@@ -4,6 +4,11 @@ class ReservationsController < ApplicationController
   def confirm
     @room = Room.find(reservation_params[:room_id])
     @reservation = current_user.reservations.new(reservation_params)
+
+    unless @reservation.valid?
+      render "rooms/show", status: :unprocessable_entity
+      return
+    end
   end
 
   def create

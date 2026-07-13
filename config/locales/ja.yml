@@ -12,3 +12,10 @@ ja:
       invalid: メールアドレスまたはパスワードが正しくありません
       user:
         invalid: メールアドレスまたはパスワードが正しくありません
+  
+  activerecord:
+    attributes:
+      reservation:
+        checkin_at: チェックイン日
+        checkout_at: チェックアウト日
+        guest_count: 人数

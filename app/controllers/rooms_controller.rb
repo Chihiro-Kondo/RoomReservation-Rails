@@ -40,6 +40,7 @@ class RoomsController < ApplicationController
 
   def show 
     @room = Room.find(params[:id])
+    @reservation = Reservation.new(room: @room)
   end
 
   def edit #登録した施設の編集
