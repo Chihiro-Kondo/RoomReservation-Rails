@@ -60,7 +60,7 @@ class RoomsController < ApplicationController
     @room = current_user.rooms.find(params[:id])
     @room.destroy
 
-    redirect_to own_rooms_path, notece: "施設を削除しました"
+    redirect_to own_rooms_path, notice: "施設を削除しました"
   end
   private
 

@@ -1,0 +1,14 @@
+ja:
+  devise:
+    sessions:
+      signed_in: ログインしました
+      signed_out: ログアウトしました
+      user:
+        signed_in: ログインしました
+        signed_out: ログアウトしました
+    
+
+    failure:
+      invalid: メールアドレスまたはパスワードが正しくありません
+      user:
+        invalid: メールアドレスまたはパスワードが正しくありません

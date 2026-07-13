@@ -7,12 +7,13 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    @room = Room.find(reservation_params[:room_id])
     @reservation = current_user.reservations.new(reservation_params)
 
     if @reservation.save
       redirect_to reservations_path, notice: "予約が完了しました"
     else
-      render :confirm
+      render :confirm, status: :unprocessable_entity
     end
   end
   
