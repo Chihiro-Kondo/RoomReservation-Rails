@@ -1,0 +1,43 @@
+<div class="room-form">
+  
+  <h2 class="roomCreate-title">新規登録</h2>
+
+  <%= form_with model: @room, local: true do |f| %>
+    
+    <div class="form-row">
+      <%= f.label :name, "施設名", class: "required" %>
+      <%= f.text_field :name, placeholder: "ルーム名を入力", class: "form-control" %>
+    </div>
+
+    <div class="form-row">
+      <%= f.label :description, "施設詳細", class: "required" %>
+      <%= f.text_area :description, rows: 6, placeholder: "施設詳細を入力", class: "DESform-control" %>
+    </div>
+
+    <div class="form-row">
+      <%= f.label :price, "料金", class:"required" %>
+      <%= f.number_field :price, placeholder: "一泊あたりの最低価格を入力", class: "form-control" %>
+    </div>
+
+    <div class="form-row">
+      <%= f.label :address, "住所", class:"required" %>
+      <%= f.text_field :address, placeholder: "住所を入力", class: "form-control" %>
+    </div>
+      
+    <div class="form-row">
+      <%= f.label :image, "施設画像" %>
+
+      <%= f.file_field :image, 
+        class: "form-control", 
+        id: "room-image-input", accept: "image/*" %>
+    
+      <div class="mt-3">
+        <img id="image-preview" class="image-preview">
+      </div>
+    </div>
+      <p class="text-danger" >※デフォルトの画像を表示しています</p>
+      <%= f.submit "登録", class: "save-btn" %>
+
+      <%= link_to "キャンセル", rooms_path, class: "cancel-btn" %>
+  <% end %>
+ </div>

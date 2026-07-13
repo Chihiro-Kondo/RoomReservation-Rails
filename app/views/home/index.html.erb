@@ -1,0 +1,82 @@
+<div class="hero">
+  <%= image_tag "home_japan.png", class: "hero-image" %>
+
+  <div class="hero-content">
+
+    <h1>旅をより楽しく、快適に！</h1>
+    <p>Have fun! Japan Trip</p>
+
+    <%= form_with url: rooms_path, method: :get, local: true do %>
+
+      <div class="search-box row g-0">
+
+        <div class="col-md-10">
+          <%= text_field_tag :address,params[:address],
+          placeholder: "エリア名を入力", class: "search-input" %>
+        </div>
+      
+        <div class="col-md-2">
+          <%= submit_tag "検索", class: "btn btn-primary w-100 search-btn" %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container my-5">
+  <h2 class="mb-4">おすすめのエリア</h2>
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="card area-card">
+        <%= link_to rooms_path(address: "東京都") do %>
+          <%= image_tag "Tokyo.png", class: "card-img-top" %>
+        
+          <div class="card-body text-center">
+            <h5>東京</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="card area-card">
+        <%= link_to rooms_path(address: "大阪府") do %>
+          <%= image_tag "Osaka.jpg", class: "card-img-top" %>
+
+          <div class="card-body text-center">
+            <h5>大阪</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="card area-card">
+        <%= link_to rooms_path(address: "京都府") do %>
+          <%= image_tag "Kyoto.jpg", class: "card-img-top" %>
+
+          <div class="card-body text-center">
+            <h5>京都</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card area-card">
+        <%= link_to rooms_path(address: "札幌市") do %>
+          <%= image_tag "Sapporo.jpg", class: "card-img-top" %>
+
+          <div class="card-body text-center">
+            <h5>札幌</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>

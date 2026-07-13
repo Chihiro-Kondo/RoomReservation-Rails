@@ -1,0 +1,28 @@
+<h1>プロフィール</h1>
+
+<div class="APbtn">
+  <%= link_to "プロフィールを編集", "/users/profile/edit", class: "btn btn-primary" %>
+  <%= link_to "アカウント", "/users/account", class: "btn btn-outline-primary" %>
+</div>
+
+<table class="profileShow">
+  <tr>
+    <th>アイコン画像</th>
+    <td>
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url, class: "profileAvatar" %>
+      <% else %>
+        <%= image_tag "default-avatar.png", class: "profileAvatar" %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+     <th>名前</th>
+     <td><%= @user.name %></td>
+  </tr>
+  <tr>
+     <th>自己紹介</th>
+     <td><%= @user.introduction %></td>
+  </tr>
+</table>
+  

@@ -1,0 +1,53 @@
+<h2>アカウント編集</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="row mb-4 mt-5">
+    <div class="col-md-5">
+      <%= f.label :email, "メールアドレス", class: "form-label fw-bold" %>
+    </div>
+    <div class ="col-md-7">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-5">
+      <%= f.label :password, "変更後のパスワード", class: "form-label fw-bold"%>
+    </div>
+    <div class ="col-md-7">
+      <%= f.password_field :password, autocomplete: "new-password", 
+      placeholder: "変更後のパスワードを入力", class: "form-control"%>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-5">
+      <%= f.label :password_confirmation, "確認用パスワード", class: "form-label fw-bold"%>
+    </div>
+    <div class ="col-md-7">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", 
+      placeholder: "変更後のパスワードを入力", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-5">
+      <%= f.label :current_password, "現在のパスワード", class: "form-label fw-bold" %>
+    </div>
+    <div class ="col-md-7">
+      <%= f.password_field :current_password, autocomplete: "current-password", 
+      placeholder: "現在のパスワードを入力", class: "form-control"%>
+    </div>
+  </div>
+
+  <div class="text-end">
+    <%= link_to "キャンセル", "/users/account", class: "btn btn-outline-secondary me-3" %>
+    <%= f.submit "保存", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<h1>アカウント</h1>
+
+<div class="APbtn">
+  <%= link_to "アカウント編集", "/users/edit", class: "btn btn-primary" %>
+  <%= link_to "プロフィール", "/users/profile", class: "btn btn-outline-primary" %>
+</div>
+
+<table class="accountShow">
+  <tr>
+   <th>メールアドレス</th>
+   <td><%= @user.email %></td>
+  </tr>
+
+  <tr>
+    <th>パスワード</th>
+    <td>*********</td>
+  </tr>
+</table>
+
+

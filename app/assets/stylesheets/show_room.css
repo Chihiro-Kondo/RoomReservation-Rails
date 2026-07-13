@@ -1,0 +1,44 @@
+.room-image {
+  width: 100%;
+  max-width: 760px;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.room-detail {
+  background-color: #fcf4ea;
+  padding: 30px;
+  margin: 0 20px 20px 40px;
+}
+
+.price{
+  color: #ff6b4a;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.reservation-box {
+  background-color: white;
+  padding: 25px;
+  margin-top: 30px;
+}
+
+.reserve-btn {
+  width: 100%;
+  height: 70px;
+  font-size: 22px;
+  background-color: #ff6b4a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.reserve-btn:hover {
+  background-color: #ff5a35;
+}
+
+.back-link {
+  text-decoration: none;
+  font-size: 22px;
+}

@@ -1,0 +1,49 @@
+<div class="room-form">
+  
+  <h2>予約の編集</h2>
+
+  <% if @reservation.errors.any? %>
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      <% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= form_with model: @reservation, local: true do |f| %>
+    
+    <div class="mb-4 row">
+      <label class="col-md-3 fw-bold" >施設名</label>
+      <div class="col-md-9 pt-2">
+        <%= @reservation.room.name %>
+      </div>
+    </div>
+
+    <div class = "mb-4 row">
+      <%= f.label :checkin_at, "チェックイン", class: "col-md-3 fw-bold" %>
+      <div class="col-md-9">
+        <%= f.date_field :checkin_at, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class = "mb-4 row">
+      <%= f.label :checkout_at, "チェックアウト", class: "col-md-3 fw-bold" %>
+      <div class="col-md-9">
+        <%= f.date_field :checkout_at, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-4 row">
+      <%= f.label :guest_count, "人数", class: "col-md-3 fw-bold" %>
+      <div class="col-md-9">
+        <%= f.number_field :guest_count, placeholder: "人", class: "form-control" %>
+      </div>
+    </div>
+
+      <%= f.submit "更新", class: "save-btn" %>
+
+      <%= link_to "キャンセル", reservations_path, class: "cancel-btn" %>
+  <% end %>
+</div>
