@@ -7,12 +7,12 @@
 }
 
 .accountShow {
-width: 800px;
-margin: 0 auto;
+  width: 800px;
+  margin: 0 auto;
 }
 
 .accountShow th {
-display: flex;
-justify-content: center;
-margin: 20px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }

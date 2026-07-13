@@ -2,28 +2,28 @@
   max-width: 900px;
   margin:60px auto;
 
-  h2{
+  h2 {
     margin-bottom: 50px;
     font-weight: bold;
     text-align: center;
   }
 
-  .form-row{
+  .form-row {
     display:flex;
     align-items: center;
     margin-bottom: 35px;
 
-    label{
+    label {
       width: 200px;
       font-size: 18px;
       font-weight: bold;
     }
 
-    .required::after{
+    .required::after {
       content: " *";
       color: red;
     }
-    .form-control{
+    .form-control {
       flex: 1;
       height: 40px;
       border-radius: 8px;

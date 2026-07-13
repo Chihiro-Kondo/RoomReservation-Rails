@@ -6,9 +6,6 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     super
-    puts "============="
-    puts "GET /resource/sign_in"
-    puts "============="
   end
 
   # POST /resource/sign_in

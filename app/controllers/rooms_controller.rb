@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   
   def index #検索結果一覧
     @rooms = Room.all
@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
         "東京" => "東京都",
         "大阪" => "大阪府",
         "京都" => "京都府",
-        "札幌" => "札幌市",
+        "札幌" => "札幌市"
       }
       search_word = prefecture_map[address] || address
 
@@ -30,7 +30,7 @@ class RoomsController < ApplicationController
   end
 
   def new #施設の作成
-    @room = Room.new
+    @room = current_user.rooms.new
   end
 
   def create #施設の保存
@@ -48,7 +48,7 @@ class RoomsController < ApplicationController
     @rooms = current_user.rooms.order(created_at: :desc)
   end
 
-  def show 
+  def show #各施設の詳細
     @room = Room.find(params[:id])
     @reservation = Reservation.new(room: @room)
   end
@@ -67,7 +67,7 @@ class RoomsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy #施設の削除
     @room = current_user.rooms.find(params[:id])
     @room.destroy
 
