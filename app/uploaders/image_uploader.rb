@@ -30,6 +30,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
   #アップロード時にリサイズ
   process resize_to_limit: [1200, 800]
+
+  def size_range
+    1..5.megabytes
+  end
   # Create different versions of your uploaded files:
 
   #一覧表示用サムネイル

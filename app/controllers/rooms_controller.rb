@@ -6,7 +6,17 @@ class RoomsController < ApplicationController
     
     #エリア検索
     if params[:address].present?
-      @rooms = @rooms.where("address LIKE ?", "%#{params[:address]}%")
+      address = params[:address].strip
+
+      prefecture_map = {
+        "東京" => "東京都",
+        "大阪" => "大阪府",
+        "京都" => "京都府",
+        "札幌" => "札幌市",
+      }
+      search_word = prefecture_map[address] || address
+
+      @rooms = @rooms.where("address LIKE ?", "%#{search_word}%")
     end
 
     #フリーワード検索

@@ -42,8 +42,11 @@
       border-radius: 8px;
     }
 
-    .file-upload {
-      height: auto;
+    .image-preview {
+      width: 400px;
+      height: 300px;
+      object-fit: cover;
+      display: none;
     }
   }
   

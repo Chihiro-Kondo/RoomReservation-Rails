@@ -26,13 +26,15 @@
       
     <div class="form-row">
       <%= f.label :image, "施設画像" %>
-      <%= f.file_field :image, class: "form-control file-upload" %>
-      
-        <% if @room.image? %>
-          <%= image_tag @room.image.url %>
-        <% else %>
-          <%= image_tag "default-room.png" %>
-        <% end %>
+
+      <%= f.file_field :image, 
+        class: "form-control", 
+        id: "room-image-input", accept: "image/*" %>
+    
+
+      <div class="mt-3">
+        <img id="image-preview" class="image-preview">
+      </div>
     </div>
       <p class="text-danger" >※デフォルトの画像を表示しています</p>
       <%= f.submit "登録", class: "save-btn" %>
